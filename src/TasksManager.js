@@ -17,8 +17,18 @@ module.exports = class TasksManager {
 
                 return new Promise((resolve) => {
                     setTimeout(() => {
-                        resolve({ specificResponse: { someData: true } })
-                    }, 10000)
+                        task.progress(25)
+                        setTimeout(() => {
+                            task.progress(50)
+                            setTimeout(() => {
+                                task.progress(75)
+                                setTimeout(() => {
+                                    task.progress(100)
+                                    resolve({ specificResponse: { someData: true } })
+                                }, 3000)
+                            }, 3000)
+                        }, 3000)
+                    }, 3000)
                 })
             }
 
