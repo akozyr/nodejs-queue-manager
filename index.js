@@ -25,4 +25,10 @@ app.get('/tasks', async (req, res) => {
     res.send(`Currently running ${processingJobsNumber} jobs.`)
 })
 
+app.get('/tasks/:id', async (req, res) => {
+    const job = await tasksManager.getById(req.params.id)
+
+    res.send(`Task state for ${job.id} - ${await job.getState()}. Progress - ${await job.progress()}. Result - ${JSON.stringify(job.returnvalue)}.`)
+})
+
 app.listen(PORT, () => console.log(`Queue manager listening on port ${PORT}!`))

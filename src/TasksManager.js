@@ -11,8 +11,18 @@ module.exports = class TasksManager {
     }
 
     init() {
-        this._manager.process((task) => {
-            return Promise.resolve({ done: true})
+        this._manager.process(async (task) => {
+            async function heavyLogic(task) {
+                console.log(task.id, task.data)
+
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve({ specificResponse: { someData: true } })
+                    }, 10000)
+                })
+            }
+
+            return await heavyLogic(task)
         })
     }
 
@@ -22,5 +32,9 @@ module.exports = class TasksManager {
 
     async count() {
         return this._manager.count()
+    }
+
+    async getById(id) {
+        return this._manager.getJob(id)
     }
 }
