@@ -23,6 +23,8 @@
   "homepage": "https://github.com/akozyr/nodejs-queue-manager#readme",
   "devDependencies": {},
   "dependencies": {
+    "bull": "^3.11.0",
+    "express": "^4.17.1",
     "nodemon": "^1.19.4"
   }
 }
