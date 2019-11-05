@@ -40,8 +40,8 @@ module.exports = class TasksManager {
         return this._manager.add(data, { jobId: uuidv4() })
     }
 
-    async count() {
-        return this._manager.count()
+    async getJobCounts() {
+        return this._manager.getJobCounts()
     }
 
     async getById(id) {

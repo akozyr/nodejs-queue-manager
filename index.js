@@ -20,9 +20,9 @@ app.post('/tasks', async (req, res) => {
 })
 
 app.get('/tasks', async (req, res) => {
-    const processingJobsNumber = await tasksManager.count()
+    const queueJobsNumber = await tasksManager.getJobCounts()
 
-    res.send(`Currently running ${processingJobsNumber} jobs.`)
+    res.json(queueJobsNumber)
 })
 
 app.get('/tasks/:id', async (req, res) => {
